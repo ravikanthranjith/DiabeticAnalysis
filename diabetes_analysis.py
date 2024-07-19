@@ -57,7 +57,17 @@ st.write(f"Average Glucose Level: {filtered_data['Glucose Value'].mean():.2f} mg
 st.write(f"Hypoglycemia Count: {(filtered_data['Glucose Value'] < 70).sum()}")
 st.write(f"Hyperglycemia Count: {(filtered_data['Glucose Value'] > 180).sum()}")
 
-# Display glucose level graph
+# Create and configure the Plotly graph
 fig = px.line(filtered_data, x=x_axis, y=y_axis, title='Glucose Levels')
-st.plotly_chart(fig)
 
+# Update layout for responsiveness
+fig.update_layout(
+    autosize=True,  # Allow the chart to resize automatically
+    margin=dict(l=40, r=40, t=40, b=40),  # Add margins to avoid clipping
+    title=dict(x=0.5),  # Center the title
+    xaxis_title=x_axis,
+    yaxis_title=y_axis
+)
+
+# Display the Plotly graph in Streamlit
+st.plotly_chart(fig, use_container_width=True)
