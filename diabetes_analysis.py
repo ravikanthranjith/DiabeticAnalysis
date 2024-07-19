@@ -60,7 +60,7 @@ st.write(f"Hyperglycemia Count: {(filtered_data['Glucose Value'] > 180).sum()}")
 # Create and configure the Plotly graph
 fig = px.line(filtered_data, x=x_axis, y=y_axis, title='Glucose Levels')
 fig.update_layout(
-    width=2488,  # Adjust the width as needed
+    width=1200,  # Adjust the width as needed
     height=1200,  # Adjust the height as needed
     title=dict(x=0.5),  # Center the title
 )
