@@ -60,14 +60,18 @@ st.write(f"Hyperglycemia Count: {(filtered_data['Glucose Value'] > 180).sum()}")
 # Create and configure the Plotly graph
 fig = px.line(filtered_data, x=x_axis, y=y_axis, title='Glucose Levels')
 
-# Update layout for responsiveness
+# Update layout for better responsiveness
 fig.update_layout(
-    autosize=True,  # Allow the chart to resize automatically
-    margin=dict(l=40, r=40, t=40, b=40),  # Add margins to avoid clipping
+    autosize=True,  # Automatically adjust size
+    margin=dict(l=20, r=20, t=20, b=20),  # Reduced margins for better fit on small screens
     title=dict(x=0.5),  # Center the title
     xaxis_title=x_axis,
-    yaxis_title=y_axis
+    yaxis_title=y_axis,
+    xaxis=dict(tickmode='linear'),  # Better tick management on small screens
+    yaxis=dict(tickmode='linear')   # Better tick management on small screens
 )
 
 # Display the Plotly graph in Streamlit
-st.plotly_chart(fig, use_container_width=True)
+# Adjust width and height based on container size
+st.write("### Glucose Levels Chart")
+st.plotly_chart(fig, use_container_width=True, height=600)
